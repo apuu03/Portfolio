@@ -1,0 +1,442 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  color: rgb(255, 255, 255);
+  scroll-behavior: smooth;
+}
+*::selection {
+  background: #350499;
+  color: #f8f8f9;
+  text-decoration: underline solid white;
+}
+
+@keyframes fluor {
+  1%,
+  3%,
+  6% {
+    border-color: rgba(255, 255, 255, 0.075);
+  }
+  2%,
+  4%,
+  5% {
+    border-color: #5621bf;
+    filter: drop-shadow(0 0 0.2rem blueviolet);
+  }
+  0%,
+  100% {
+    border-color: #472192;
+    filter: drop-shadow(0 0 0.2rem blueviolet);
+  }
+  50% {
+    border-color: #5621bf;
+    filter: drop-shadow(0 0 0.5rem #472192);
+  }
+}
+@keyframes pulse-not-shadow {
+  0%,
+  100% {
+    border-color: #472192;
+  }
+  50% {
+    border-color: #5a14e7;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    border-color: #472192;
+    filter: drop-shadow(0 0 5rem #472192);
+  }
+  50% {
+    border-color: #5a14e7;
+    filter: drop-shadow(0 0 6rem #472192);
+  }
+}
+@keyframes transformate {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.1) rotate(-15deg);
+  }
+}
+body {
+  background-color: #10151d;
+  background-image: url("src/background/Component1.png");
+  background-size: 100px;
+  background-repeat: repeat;
+}
+/* SECCION NAV */
+.shadowtop {
+  position: absolute;
+  left: 50%;
+  top: -25px;
+  width: 400px;
+  height: 20px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 5rem #5500ff);
+  background-color: white;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  filter: drop-shadow(0 0 0.2rem #453664);
+  padding: 40px 0px 40px 0px;
+  z-index: 2;
+}
+.opaque {
+  transition: 0.3s all;
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid blueviolet;
+}
+.name {
+  padding-left: 40px;
+}
+.navigation {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  padding-right: 40px;
+}
+.navigation a {
+  font-weight: 700;
+  text-decoration: none;
+}
+.navigation a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 0%;
+  height: 2px;
+  background-color: blueviolet;
+  transition: 0.3s all;
+}
+
+.navigation a:hover::before {
+  width: 25%;
+  filter: drop-shadow(1 0 0.5rem rgb(129, 2, 247));
+}
+/* SECCION NAV */
+
+/* SECCION MAIN */
+
+.container-img {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  padding-top: 20%;
+}
+div .me {
+  width: 400px;
+  border-radius: 50%;
+  filter: grayscale(80%);
+}
+.whithMe span {
+  font-weight: bold;
+}
+.whithMe{
+ margin: 20px;
+}
+.container-img div {
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.075);
+  transition: 0.3s all;
+}
+.me:hover {
+  filter: grayscale(0.5%);
+  transition: 0.3s all;
+}
+.container-img div:hover {
+  border: 5px solid blueviolet;
+  transition: 0.3s all;
+  animation: fluor 2s infinite;
+}
+
+.container-img p {
+  margin-top: 20px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid white;
+}
+section {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.projects {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+  text-align: center;
+  width: 99%;
+}
+.projects-img {
+  border-radius: 18px;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgb(47, 60, 82);
+}
+.projects-img img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+}
+.project-description h4,
+p {
+  font-size: larger;
+}
+.projects-img .project-description {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: -0px;
+  left: 1px;
+  width: 97%;
+  height: 95%;
+  border-radius: 18px;
+  padding: 10px;
+  background-color: #170c31af;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.projects-img:hover {
+  animation: pulse-not-shadow 2s infinite;
+}
+
+.projects-img:hover .project-description {
+  opacity: 1;
+  visibility: visible;
+}
+/* SECCION MAIN */
+/* SECCION FOOTER */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 150px;
+}
+footer h2 {
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+/* SECCION FOOTER */
+
+/* CONTACTO Y TECNOLOGIAS */
+.technologiesContact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 50%;
+  grid-row-gap: 0px;
+  transform: translateX(-10%);
+}
+.technologies {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.contact {
+  grid-area: 1 / 2 / 2 / 3;
+}
+/* TECNOLOGIAS */
+
+.technologiesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  border: 1px solid #5500ff;
+  border-radius: 18px;
+  background-color: #161e29;
+  filter: drop-shadow(0 0 4rem #472192);
+  justify-items: center;
+  padding: 50px;
+}
+
+.technologiesGrid:hover {
+  animation: pulse 2s infinite;
+  transition: 0.2s all;
+}
+.technologiesGrid img {
+  height: 100px;
+  width: 100px;
+  filter: grayscale(1);
+  transition: 0.2s;
+}
+.technologiesGrid img:hover {
+  filter: grayscale(0);
+  transition: 0.2s;
+}
+.technologiesGrid .mongoDb:hover {
+  animation: transformate .5s normal;
+  filter: drop-shadow(0 0 1rem green);
+}
+.technologiesGrid .css:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #1c88c7);
+}
+.technologiesGrid .html:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem rgb(239, 101, 42));
+}
+.technologiesGrid .react:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #61dafb);
+}
+.technologiesGrid .javascript:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #ffde25);
+}
+.technologiesGrid .sqlite:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #40a0db);
+}
+.technologiesGrid .tailwind:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #44a8b3);
+}
+
+.technologiesGrid .python:hover {
+  animation: transformate .5s normal;
+
+  filter: drop-shadow(0 0 1rem #4380b1);
+}
+/* TECNOLOGIAS */
+/* CONTACTO */
+.contact:hover {
+  animation: pulse 2s infinite;
+}
+.contact form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 80px;
+  border: 1px solid #5500ff;
+  border-radius: 18px;
+  background-color: #161e29;
+  filter: drop-shadow(0 0 4rem #472192);
+  width: 100%;
+}
+.contact form input[type="text"] {
+  width: 100%;
+  border-bottom: 1px solid #6f46c1;
+}
+.contact form input[type="text"]::placeholder {
+  color: white;
+  font-size: larger;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+  filter: drop-shadow(0 0 0.2rem #472192);
+}
+
+.contact h2 {
+  transform: translateX(30%);
+}
+.contact form input,
+textarea {
+  text-align: center;
+  height: 100%;
+  background-color: #161e29;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+textarea {
+  border: 1px solid #6f46c1;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+textarea::placeholder {
+  color: white;
+  font-size: larger;
+}
+input[type="text"] {
+  width: 100%;
+}
+
+.contact form input[type="submit"] {
+  background-color: #10151d;
+  padding: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.contact form input[type="submit"]:hover {
+  background-color: #1e1f33;
+  outline: solid #a87ffb;
+  transition: 0.2s all;
+}
+.contact form input[type="submit"]:focus {
+  background-color: #935ffb;
+  outline: 1px solid #8549fd;
+}
+/* CONTACTO */
+/* CONTACTO Y TECNOLOGIAS */
+/* REDES */
+.redes {
+  position: sticky;
+  bottom: 0px;
+  padding: 10px;
+  filter: drop-shadow(0 0 5rem #472192);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  background-color: #161e29;
+  border: 1px solid rgb(47, 60, 82);
+  border-bottom: none;
+}
+.redes:hover {
+  animation: pulse 2s infinite;
+}
+
+.redes div {
+  margin-left: -30px;
+  display: flex;
+  gap: 50px;
+}
+.redes div img {
+  transition: 0.3s;
+}
+.redes div img:hover {
+  animation: transformate 1s normal;
+  filter: drop-shadow(0 0 0.2rem white);
+  transition: 0.3s;
+}
+
+/* REDES */
